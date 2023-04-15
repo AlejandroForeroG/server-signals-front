@@ -18,13 +18,14 @@ h3 {
     border-radius: 20px;
     padding: 10px 15px;
     border: none;
+    color: rgb(255, 251, 245);
     transition: background-color 0.3s ease;
-    background: #8c56e9;
+    background: rgba(7, 52, 249, 1);
 
 }
 
 #startButton:hover {
-    background-color: rgb(152, 53, 245);
+    background-color: rgb(53, 127, 245);
 }
 
 #startButton.pause {
@@ -47,7 +48,7 @@ h3 {
     border-radius: 10px;
     border-width: 1px;
     padding: 25px 10px;
-    box-shadow: 2px 2px 8px 3px rgba(147, 116, 240, 0.2);
+    box-shadow: 2px 2px 8px 3px rgba(116, 157, 240, 0.2);
     display: inline-block;
 
 }

@@ -1,7 +1,7 @@
 // import {io} from "socket.io-client";
 // const socket = io('http://192.168.10.15:3100');
 import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
-const socket = io('http://192.168.10.15:3100');
+const socket = io('http://192.168.10.15:3000');
 console.log("to correcto")
 let state=0;
 

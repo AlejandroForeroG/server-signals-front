@@ -9,7 +9,7 @@ function dataGraph(chartname){
     const ctx = document.getElementById(chartname).getContext('2d');
     const labels =[ "1","2","3","4","5","6","7","8","9","10"]
     let gradient  = ctx.createLinearGradient(0,0,0,400);
-    gradient.addColorStop(0,'rgba(133, 0, 255, 1)' )
+    gradient.addColorStop(0,'rgba(13, 148, 68, 0.7)')
     gradient.addColorStop(1,'rgba(0, 188, 212, 0.5)')
     const data ={
     labels:labels,
@@ -17,7 +17,6 @@ function dataGraph(chartname){
         data:valor,
         label:chartname,
         fill: true,
-        tension: 0.5,
         backgroundColor:gradient,      
         }]
     }
@@ -25,7 +24,13 @@ function dataGraph(chartname){
         type:'line',
         data:data,
         options:{
-            responsive:true
+            responsive:true,
+            animation: { // Configuración de animaciones
+            duration: 300, // Duración de la animación en milisegundos
+            easing: 'easeInOutQuad', // Función de easing para la animación
+            // from: 1, // Valor inicial de la animación
+            // to: 2// Valor final de la animación
+        }
         }
     }
 
