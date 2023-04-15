@@ -3,7 +3,6 @@ function dataGraph(chartname){
     let valor =[]
     if(sessionStorage.getItem(chartname)){
         valor = sessionStorage.getItem(chartname).split(',').map(Number);
-        console.log(valor)
     }
     //chart
     const ctx = document.getElementById(chartname).getContext('2d');
@@ -28,8 +27,6 @@ function dataGraph(chartname){
             animation: { // Configuración de animaciones
             duration: 300, // Duración de la animación en milisegundos
             easing: 'easeInOutQuad', // Función de easing para la animación
-            // from: 1, // Valor inicial de la animación
-            // to: 2// Valor final de la animación
         }
         }
     }
