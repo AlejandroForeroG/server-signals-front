@@ -1,6 +1,6 @@
 
-import Signal from "./modulos/MySignals.js"
-import Evaluator from "./modulos/evaluator.js";
+import Signal from "../modulos/MySignals.js"
+import Evaluator from "../modulos/evaluator.js";
 const evaluator = new Evaluator();
 const names= ["temperature","bpm","oxigenSaturation","gsrResistance","grsVoltage","airflux","ECG"]
 
@@ -29,5 +29,6 @@ butonDelete.addEventListener('click',()=>{
     console.log('borrado')
     for(let i = 0 ;i < names.length;i++){
         document.getElementById(names[i]+"value").value=""
+        signalsArray[i].clearData();
     }
 })

@@ -79,7 +79,7 @@ class ChartData {
     const datos = chart.data.datasets[0].data.slice(0, 9);
 
     const bool =
-      valor !== 1 ? datos.length <= 10 : datos.length === 9;
+      valor !== 1 ? datos.length <= 10 : datos.length === 10;
     if (!bool) {
       return;
     }

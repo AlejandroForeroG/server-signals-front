@@ -6,27 +6,30 @@ class valuesAdm{
     }
 
     dataRun(chart, sample, variable) {
-    // Se crea una promesa para evaluar los primeros 10 símbolos
+    // Se evaluan los  los primeros 10 símbolos
     // y evitar la acumulación de etiquetas y datos en el gráfico
-    const proberPromise = new Promise((resolve, reject) => {
       if (this.prober !== 1) {
-        if (sample <= 10) {
-          reject(chart, sample, variable);
-        } else {
-          resolve(chart, sample, variable);
-        }
-      } else {
-        resolve(chart, sample, variable);
-      }
-    });
-    proberPromise
-      .then(() => {
+          if (sample <= 10) {
+            this.addInit(chart, sample, variable);
+          } else {
+            this.ad(chart, sample, variable);
+            sessionStorage.setItem('prober', this.prober);
+          }
+      }else{
         this.ad(chart, sample, variable);
         sessionStorage.setItem('prober', this.prober);
-      })
-      .catch(() => {
-        this.addInit(chart, sample, variable);
-      });
+      }
+    }
+
+    addInit(chart, sample, variable) {
+       
+        // chart.data.labels.splice(sample - 1, 1, sample);
+        chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(variable);
+        });
+        this.almacenamiento(chart);
+        chart.update();
+        this.counter++;
     }
 
     // Método para actualizar el gráfico después de agregar nuevos datos
@@ -36,32 +39,17 @@ class valuesAdm{
         chart.update();
         this.removeData(chart);
         this.cont++;
-        }
-
-    
-    // Método para agregar los primeros datos en el gráfico
-    addInit(chart, sample, variable) {
-        this.addDataInit(chart, sample, variable);
-        chart.update();
-        this.counter++;
     }
+        
    // Método para agregar datos al gráfico antes de los primeros 10 datos
-    addData(chart, label, dataS) {
-        chart.data.labels.push(label);
+    addData(chart, sample, variable) {
+        chart.data.labels.push(sample);
         chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(dataS);
+        dataset.data.push(variable);
         });
         this.almacenamiento(chart);
     }
-      // Método para agregar los primeros 10 datos en el gráfico
-    addDataInit(chart, label, dataS) {
-        chart.data.labels.splice(label - 1, 1, label);
-        chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(dataS);
-    });
-    this.almacenamiento(chart);
-    }
-    // Método para remover el primer dato del gráfico
+  //metodo para eliminar datos del gráfico
     removeData(chart) {
         chart.data.labels.shift();
         chart.data.datasets.forEach((dataset) => {
@@ -74,17 +62,22 @@ class valuesAdm{
         const valor = sessionStorage.getItem("prober");
         const nombre = chart.data.datasets[0].label;
         const datos = chart.data.datasets[0].data.slice(0, 9);
-
         const bool =
-        valor !== 1 ? datos.length <= 10 : datos.length === 9;
+        valor !== 1 ? datos.length <= 9 : datos.length === 9;
         if (!bool) {
         return;
         }
-
         sessionStorage.setItem(nombre, datos);
     }
 
+    clearData(){
+        this.counter = [];
+        this.prober = 0;
+        this.cont = 0;
+        sessionStorage.clear()
+    }
 
 }
+
 
 export default valuesAdm;
