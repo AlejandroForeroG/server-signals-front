@@ -1,14 +1,13 @@
-// import {io} from "socket.io-client";
-// const socket = io('http://192.168.10.15:3100');
-import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
-import ChartData from "./dataMod.js";
 
+import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
 const socket = io('http://192.168.10.15:3000');
 
-
+import ChartData from "./dataMod.js";
 const chartData = new ChartData();
+
 const sensores = ["temperature","bpm","oxigenSaturation","gsrResistance","grsVoltage","airflux","ECG"]
 renderGui(sensores)
+
 let state=0;
 let charts=[]
 
@@ -38,6 +37,8 @@ socket.on('rasberry:data', (dataSerial) => {
     }
 
 })
+
+socket.on('btninit',(state)=>{console.log(state)})
 //graficos de la tabla 
 for(let i = 0 ;i < sensores.length;i++){
     charts[i]=dataGraph(sensores[i])

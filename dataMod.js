@@ -20,8 +20,6 @@ class ChartData {
         resolve(chart, sample, variable);
       }
     });
-
-
     proberPromise
       .then(() => {
         this.ad(chart, sample, variable);
