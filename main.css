@@ -23,6 +23,16 @@ h3 {
     background: rgba(7, 52, 249, 1);
 
 }
+#btntoggle{
+        display: block;
+        margin: 10px 10%;
+        border-radius: 20px;
+        padding: 10px 15px;
+        border: none;
+        color: rgb(255, 251, 245);
+        transition: background-color 0.3s ease;
+        background: rgba(13, 148, 68, 0.7);
+}
 
 #startButton:hover {
     background-color: rgb(53, 127, 245);
@@ -51,4 +61,27 @@ h3 {
     box-shadow: 2px 2px 8px 3px rgba(116, 157, 240, 0.2);
     display: inline-block;
 
+    
+}
+
+/* Estilos CSS para el contenedor del formulario */
+.contenedor-formulario {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* Posición inicial del contenedor fuera del área visible */
+    height: 100vh;
+    width: 100px;
+    background-color: #f8f9fa;
+    transition: right 0.3s ease-in-out;
+    /* Transición animada para suavizar el efecto de aparecer/retraer */
+    z-index: 9999;
+    /* Asegurarse de que el contenedor esté por encima del contenido de la página */
+}
+
+/* Estilos CSS para mostrar el contenedor del formulario */
+.contenedor-formulario.mostrar {
+    right: 0;
+    
+    /* Mover el contenedor hacia la posición visible */
 }

@@ -2,7 +2,7 @@
 import Signal from "../modulos/MySignals.js"
 import Evaluator from "../modulos/evaluator.js";
 const evaluator = new Evaluator();
-const names= ["temperature","bpm","oxigenSaturation","gsrResistance","grsVoltage","airflux","ECG"]
+const names= ["temperature","bpm","oxigenSaturation","gsrResistance","airflux","ECG"]
 
 renderGui(names)
 const butonValue = document.getElementById('btnvalues');
@@ -17,10 +17,10 @@ for(let i = 0 ;i < names.length;i++){
 butonValue.addEventListener('click',()=>{   
     for(let i = 0; i<signalsArray.length;i++){
         signalsArray[i].setValue(parseFloat(document.getElementById(names[i]+"value").value)) 
-        if(isNaN(signalsArray[i].value)==false){
+        if(isNaN(signalsArray[i].getValue())==false){
+            
             signalsArray[i].addData();
             console.log(signalsArray[i].getData());
-            evaluator.evaluate(signalsArray[i])
         } 
     }      
 })

@@ -14,18 +14,27 @@
 <body>
 
 
-    <h1 class="Texto">Sistema de adquisicion de señales V0.7 </h1>
+    <h1 class="Texto">Sistema de adquisicion de señales V0.9 </h1>
     <h2 class="Texto">Hola !!!👋</h2>
     <h3 class="Texto">Estas son las señales adquiridas:</h3>
-
     <button id="startButton">Iniciar conexion</button>
-   
+    <button id="btnToggle" class="btn btn-primary">Mostrar/Ocultar Formulario</button>
+    <div id="contenedorForm" class="container contenedor-formulario">
+        <form class="row" id="tiempos">
+        </form>
+    </div>
+            
+        
 
     <!-- Scripsts-->
     <script src="objects.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-   
     <script src="app.js" type="module"></script>
+    <script>
+        document.getElementById('btnToggle').addEventListener('click', function () {
+                document.getElementById('contenedorForm').classList.toggle('mostrar');
+            });
+    </script>
 
 
 

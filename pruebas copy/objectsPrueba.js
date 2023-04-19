@@ -1,3 +1,5 @@
+let encabezados = ["Sensor","Limite inferior","Limite superior","Limite inferior","Limite superior","Limite inferior","Limite superior"]
+let banderas= ["amarilla","naranja","roja"]
 function renderGui(sensores){
 
     const signalContainer = document.getElementById("signals");
@@ -49,5 +51,64 @@ function renderGui(sensores){
         btn2.setAttribute('id','btnDelete')
         btn2.innerHTML="Borrar todo"
         valueParametros.appendChild(btn2)
-    
-}
+
+        
+        const table =document.createElement("table");
+        const thead =document.createElement("thead");
+        const tbody =document.createElement("tbody");
+        table.setAttribute('class','table table-striped mt-4 table-bordered');
+
+        const tr = document.createElement("tr")
+        for(let i = 0; i<encabezados.length;i++){
+            const th = document.createElement("th")
+            th.setAttribute('scope','col-2')
+            if(i==1 || i==2){
+                th.setAttribute('class','bg-warning')
+            }
+            if(i==3 || i==4){
+                th.style.backgroundColor='#e85427'
+            }
+            if(i==5 || i==6){
+                th.setAttribute('class','bg-danger')
+            }
+            th.innerHTML=encabezados[i]
+            tr.appendChild(th)
+            thead.appendChild(tr)
+        }
+        table.appendChild(thead)
+        
+        
+        fetch('../info/limites.json')
+        .then(response => response.json())
+        .then(limits => {
+            sensores.forEach(sensor => {
+                const tr = document.createElement("tr");
+
+                const tdSensor = document.createElement("td");
+                tdSensor.textContent=sensor;
+                tr.appendChild(tdSensor);
+
+                for(let i = 0; i<banderas.length;i++){
+                    const tdLimiteInferior = document.createElement("td");
+                    const tdLimiteSuperior = document.createElement("td");
+                    if(limits[sensor]==undefined){
+                        tdLimiteInferior.textContent="No hay datos";
+                        tdLimiteSuperior.textContent="No hay datos";
+                    }else{
+                        tdLimiteInferior.textContent=limits[sensor][banderas[i]].limite_inferior;
+                        tdLimiteSuperior.textContent=limits[sensor][banderas[i]].limite_superior;
+
+                    }
+                    tr.appendChild(tdLimiteInferior);
+
+                    tr.appendChild(tdLimiteSuperior);
+                }
+
+
+                tbody.appendChild(tr);
+                table.appendChild(tbody)
+                signalContainer.appendChild(table)
+            });
+            
+        }).catch(error => console.error(error));
+    }

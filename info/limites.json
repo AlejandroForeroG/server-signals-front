@@ -43,18 +43,44 @@
         }
     },
     "ECG": {
-
        "amarilla": {
-            "limite_inferior": 60,
-            "limite_superior": 100
+            "limite_inferior": -200,
+            "limite_superior": 200
         },
         "naranja": {
-            "limite_inferior": 101,
-            "limite_superior": 150
+            "limite_inferior": -300,
+            "limite_superior": 300
         },
         "roja": {
-            "limite_inferior": 151
-            
+            "limite_inferior": -400,
+            "limite_superior": 400
+        }
+    },
+    "gsrResistance":{
+        "amarilla": {
+        "limite_inferior": 1.5,
+        "limite_superior": 2.5
+        },
+        "naranja": {
+            "limite_inferior": 2.5,
+            "limite_superior": 3.5
+        },
+        "roja": {
+            "limite_inferior": 3.5
+        }
+    },
+    "airflux":{
+        "amarilla":{
+            "limite_inferior": 18,
+            "limite_superior": 30
+        },
+        "naranja": {
+            "limite_inferior": 30,
+            "limite_superior": 1000
+        },
+        "roja": {
+            "limite_inferior": null,
+            "limite_superior":12
         }
     }
 }
