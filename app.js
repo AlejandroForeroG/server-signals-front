@@ -1,13 +1,13 @@
 
 import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
-const socket = io('http://192.168.10.15:3000');
+const socket = io('http://192.168.10.20:3000');
 
-import ChartData from "./dataMod.js";
+//import ChartData from "./dataMod.js";
 import Signal from "./modulos/MySignals.js"
 
 
 
-const names = ["temperature","bpm","oxigenSaturation","gsrResistance","airflux","ECG"]
+const names = ["temperature","bpm","oxigenSaturation","grsVoltage","airflux","ECG"]
 renderGui(names)
 
 let state=0;

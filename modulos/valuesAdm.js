@@ -10,7 +10,7 @@ class valuesAdm{
     // Se evaluan los  los primeros 10 símbolos
     // y evitar la acumulación de etiquetas y datos en el gráfico
       if (this.prober !== 1) {
-          if (sample <= 10) {
+          if (sample <= 15) {
             this.addInit(chart, sample, variable);
           } else {
             this.ad(chart, sample, variable);
@@ -62,9 +62,9 @@ class valuesAdm{
     almacenamiento(chart) {
         const valor = sessionStorage.getItem("prober");
         const nombre = chart.data.datasets[0].label;
-        const datos = chart.data.datasets[0].data.slice(0, 9);
+        const datos = chart.data.datasets[0].data.slice(0, 14);
         const bool =
-        valor !== 1 ? datos.length <= 9 : datos.length === 9;
+        valor !== 1 ? datos.length <= 14 : datos.length === 14;
         if (!bool) {
         return;
         }

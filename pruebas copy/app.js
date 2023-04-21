@@ -10,9 +10,12 @@ const butonDelete = document.getElementById('btnDelete')
 
 
 const signalsArray = []
-for(let i = 0 ;i < names.length;i++){
-    signalsArray.push(new Signal(names[i]))
-}
+names.map((name)=>{
+    signalsArray.push(new Signal(name))
+})
+// for(let i = 0 ;i < names.length;i++){
+//     signalsArray.push(new Signal(names[i]))
+// }
 //button listeners
 butonValue.addEventListener('click',()=>{   
     for(let i = 0; i<signalsArray.length;i++){

@@ -16,7 +16,7 @@ class Signal{
         this.intervalID;
 
         if(sessionStorage.getItem('labels'+this.getName())!=null){
-            this.sample=this.chart.data.labels[9] //valor solo
+            this.sample=this.chart.data.labels[15] //valor solo
         }else{
             this.sample=1;
         }
@@ -45,7 +45,7 @@ class Signal{
         sessionStorage.setItem('labels'+this.getName(),this.chart.data.labels)      
     }
     clearData(){
-        this.chart.data.labels=[1,2,3,4,5,6,7,8,9,10];
+        this.chart.data.labels=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
         this.chart.data.datasets[0].data=[];
         this.sample=1;
         this.valuesAdm.clearData();
@@ -87,7 +87,7 @@ class Signal{
     }
 
     getData(){
-        return this.chart.data.datasets[0].data.slice(0,9);
+        return this.chart.data.datasets[0].data.slice(0,19);
     }
 
     setData(){

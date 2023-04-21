@@ -11,7 +11,7 @@ class graphAdmin{
             sample = sessionStorage.getItem('labels'+chartname).split(',').map(Number);
             var labels = sample;
         }else{
-            var labels =[ "1","2","3","4","5","6","7","8","9","10"]
+            var labels =[ "1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"]
         }
         //chart
         const ctx = document.getElementById(chartname).getContext('2d');

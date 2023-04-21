@@ -40,7 +40,7 @@ function renderGui(sensores){
         div.appendChild(select);
 
         // Agregar opciones al select
-        const opciones = [1, 5, 10, 30, 60, 120];
+        const opciones = [1, 5, 10, 30, 60, 120,0.5];
         for (let j = 0; j < opciones.length; j++) {
             const option = document.createElement('option');
             option.value = opciones[j];
