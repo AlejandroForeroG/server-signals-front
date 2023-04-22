@@ -3,7 +3,7 @@ import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
 const socket = io('http://192.168.10.20:3000');
 
 //import ChartData from "./dataMod.js";
-import Signal from "./modulos/MySignals.js"
+import Signal from "../modulos/MySignals.js"
 
 
 
