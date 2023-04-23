@@ -2,14 +2,17 @@ let encabezados = ["Sensor","Limite inferior","Limite superior","Limite inferior
 let banderas= ["amarilla","naranja","roja"]
 function renderGui(sensores){
 
-    const signalContainer = document.getElementById("signals");
+    const main = document.getElementById("signals");
     const valueParametros= document.getElementById("valores");
+    const signalsContainer= document.createElement('div')
+
+    signalsContainer.setAttribute('class','row  justify-content-center')
 
     for(let i = 0; i<sensores.length;i++){
             if(i%3==0){
                 const divfila = document.createElement("div")
                 divfila.setAttribute('class','row')
-                signalContainer.appendChild(divfila)
+                main.appendChild(divfila)
             }
             let graph = document.createElement('div');
             let canvas = document.createElement('canvas')
@@ -17,9 +20,11 @@ function renderGui(sensores){
             canvas.setAttribute('id',sensores[i])
             canvas.setAttribute('class','signal')
             graph.appendChild(canvas) 
-            signalContainer.appendChild(graph)
+            signalsContainer.appendChild(graph);
+            
 
         }
+        main.appendChild(signalsContainer)
 
         const form = document.createElement("form");
         valueParametros.appendChild(form)
@@ -107,7 +112,7 @@ function renderGui(sensores){
 
                 tbody.appendChild(tr);
                 table.appendChild(tbody)
-                signalContainer.appendChild(table)
+                main.appendChild(table)
             });
             
         }).catch(error => console.error(error));

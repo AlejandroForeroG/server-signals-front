@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 
 class Server{
     constructor(){
@@ -15,12 +16,16 @@ class Server{
 
     middlewares(){
         // Directorio público
-        this.app.use(express.static(__dirname + '../Public'));
+        this.app.use(express.static(__dirname + '/../Public'));
     }
 
     routes(){
         this.app.get('/main',(req,res)=>{
-            res.sendFile((__dirname+'../Public/main/index.html'));
+             res.sendFile(path.join(__dirname, '../Public/main/index.html'));
+         })
+
+          this.app.get('/pruebas',(req,res)=>{
+           res.sendFile(path.join(__dirname, '../Public/pruebas/pruebas.html'));
          })
     }
 
